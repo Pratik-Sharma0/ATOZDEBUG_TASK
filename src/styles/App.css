@@ -1,0 +1,194 @@
+
+.App {
+    text-align: center;
+    padding: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #faf9f9;
+    min-height: 100vh;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.loader {
+    width: 50px;
+    aspect-ratio: 1;
+    display: grid;
+    border-radius: 50%;
+    background:
+      linear-gradient(0deg ,rgb(0 0 0/50%) 30%,#0000 0 70%,rgb(0 0 0/100%) 0) 50%/8% 100%,
+      linear-gradient(90deg,rgb(0 0 0/25%) 30%,#0000 0 70%,rgb(0 0 0/75% ) 0) 50%/100% 8%;
+    background-repeat: no-repeat;
+    animation: l23 1s infinite steps(12);
+  }
+  .loader::before,
+  .loader::after {
+     content: "";
+     grid-area: 1/1;
+     border-radius: 50%;
+     background: inherit;
+     opacity: 0.915;
+     transform: rotate(30deg);
+  }
+  .loader::after {
+     opacity: 0.83;
+     transform: rotate(60deg);
+  }
+  @keyframes l23 {
+    100% {transform: rotate(1turn)}
+  }
+
+
+.lanes-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); 
+    gap: 20px;
+    justify-content: center;
+    max-width: 1500px; 
+    width: 100%;
+}
+
+
+.lane {
+    border: none;
+    padding: 20px;
+
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden;
+    position: relative;
+}
+
+.lane:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+
+.lane-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.4em;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.post {
+    margin: 20px 0; 
+    background-color: #e7e0e0;
+    padding: 20px; 
+    border: 1px solid #ddd; 
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+
+.post::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 5px;
+    border-radius: 5px 5px 0 0;
+}
+
+
+.subreddit-search {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+}
+
+
+.subreddit-search input {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(100% - 20px);
+    font-size: 1em;
+}
+
+
+.subreddit-search button {
+    padding: 10px 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s;
+}
+.remove-button {
+    background-color: #ff4d4d; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.remove-button:hover {
+    background-color: #ff1a1a; 
+}
+
+.subreddit-search button:hover {
+    background-color: #0056b3;
+    transform: scale(1.05);
+}
+
+
+@media (max-width: 1200px) {
+    .lanes-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .lanes-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .lane {
+        padding: 15px;
+    }
+
+    .lane-header {
+        font-size: 1.2em;
+        margin-bottom: 8px;
+    }
+
+    .post {
+        margin-top: 8px;
+        padding: 8px;
+    }
+
+    .subreddit-search {
+        padding: 8px;
+    }
+
+    .subreddit-search input {
+        font-size: 0.9em;
+    }
+
+    .subreddit-search button {
+        padding: 8px 12px;
+        font-size: 0.9em; 
+    }
+}
